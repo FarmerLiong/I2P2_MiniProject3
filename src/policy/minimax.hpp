@@ -10,5 +10,4 @@ class Minimax{
 public:
   static Move get_move(State *state, int depth, int player);
   static int get_value(State *state, int depth, int player);
-  static Move get_max_move(State *state, int depth);
 };
