@@ -431,9 +431,9 @@ int main(int argc, char** argv) {
     Move action(Point(-1, -1), Point(-1, -1));
     int total = 0;
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
-    system("cls");
+    // system("cls");
 #else
-    system("clear");
+    // system("clear");
 #endif
     while (true) {
       int x, y, n, m;
@@ -470,10 +470,10 @@ int main(int argc, char** argv) {
       temp = game.next_state(action);
       std::cout << "Depth: " << total << std::endl;
       std::cout << x_axis[action.first.second] << y_axis[action.first.first] << " → " \
-                << x_axis[action.second.second] << y_axis[action.second.first] << "\n";
+                << x_axis[action.second.second] << y_axis[action.second.first] << "\n\n";
       log << "Depth: " << total << std::endl;
       log << x_axis[action.first.second] << y_axis[action.first.first] << " → " \
-          << x_axis[action.second.second] << y_axis[action.second.first] << "\n";
+          << x_axis[action.second.second] << y_axis[action.second.first] << "\n\n";
     }
     game = *temp;
     

@@ -13,7 +13,18 @@
  */
 int State::evaluate(){
   // [TODO] design your own evaluation function
-  return 0;
+  auto self_board = this->board.board[this->player];
+  auto oppn_board = this->board.board[1 - this->player];
+
+  int value = 0;
+  int now_piece, oppn_piece;
+  for(int i=0; i<BOARD_H; i+=1){
+    for(int j=0; j<BOARD_W; j+=1){
+      if((now_piece=self_board[i][j]))        value += PIECE_VALUES[now_piece];
+      else if ((oppn_piece=oppn_board[i][j])) value -= PIECE_VALUES[oppn_piece];
+    }
+  }
+  return value;
 }
 
 

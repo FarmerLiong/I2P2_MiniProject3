@@ -23,3 +23,4 @@ const char PIECE_TABLE[2][7][5] = {
   {"  ", "wP", "wR", "wn", "wB", "wQ", "wK"},
   {"  ", "bP", "bR", "bn", "bB", "bQ", "bK"},
 };
+const int PIECE_VALUES[7] = {0, 2, 6, 7, 8, 20, 100};

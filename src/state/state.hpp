@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <vector>
 #include <utility>
+#include <algorithm>
 
 #include "../config.hpp"
 
