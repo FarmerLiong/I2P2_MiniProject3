@@ -28,12 +28,19 @@ Move Alphabeta::get_move(State *state, int depth, int player){
   return retmove;
 }
 
+/* TODO : 
+ - Debug state related prob
+ - Avoid backnforth actions while having negative/draw value
+*/
 int Alphabeta::get_value(State *state, int depth, int player, int alpha, int beta){
-  int value; 
+  int value;
+
   if(depth == 0)
     return state->player == player ? state->evaluate() : -1*state->evaluate();
+
   if(state->player == player){
     value = -1e9;
+
     for(auto& move:state->legal_actions){
       value = std::max(value, get_value(state->next_state(move), depth-1, player, alpha, beta));
       alpha = std::max(alpha, value);
@@ -43,6 +50,7 @@ int Alphabeta::get_value(State *state, int depth, int player, int alpha, int bet
   }
   else{
     value = 1e9;
+
     for(auto& move:state->legal_actions){
       value = std::min(value, get_value(state->next_state(move), depth-1, player, alpha, beta));
       beta = std::min(beta, value);
