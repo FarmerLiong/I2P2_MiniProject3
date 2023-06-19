@@ -20,8 +20,22 @@ int State::evaluate(){
   int now_piece, oppn_piece;
   for(int i=0; i<BOARD_H; i++){
     for(int j=0; j<BOARD_W; j++){
-      if((now_piece=self_board[i][j]))        value += PIECE_VALUES[now_piece];
-      else if ((oppn_piece=oppn_board[i][j])) value -= PIECE_VALUES[oppn_piece];
+      if((now_piece=self_board[i][j])){
+        value += PIECE_VALUES[now_piece];
+
+        if(i>=2 && i<4 && j>=1 && j<3){         // central dominance
+          value += 1;
+          if(j==2) value += 1;
+        }
+      } 
+      else if ((oppn_piece=oppn_board[i][j])){
+         value -= PIECE_VALUES[oppn_piece];
+
+         if(i>=2 && i<4 && j>=1 && j<3){
+           value -= 1;
+           if(j==2) value -= 1;
+         }
+      }
     }
   }
   return value;
