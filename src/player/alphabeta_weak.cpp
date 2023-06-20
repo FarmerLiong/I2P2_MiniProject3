@@ -3,7 +3,7 @@
 
 #include "../config.hpp"
 #include "../state/state.hpp"
-#include "../policy/alphabeta.hpp"
+#include "../policy/alphabeta_weak.hpp"
 
 
 State* root;
@@ -43,12 +43,13 @@ void write_valid_spot(std::ofstream& fout) {
   int depth = 5;
   while(true) {
     // Choose a random spot.
-    auto move = Alphabeta::get_move(root, depth, root->player);
+    auto move = Alphabeta_weak::get_move(root, depth, root->player);
     fout << move.first.first << " " << move.first.second << " "\
          << move.second.first << " " << move.second.second << std::endl;
-    depth += 2;
     // Remember to flush the output to ensure the last action is written to file.
     fout.flush();
+    if (depth < 7 ) depth += 2;
+    else break;
     // break;
   }
 }

@@ -22,19 +22,39 @@ int State::evaluate(){
     for(int j=0; j<BOARD_W; j++){
       if((now_piece=self_board[i][j])){
         value += PIECE_VALUES[now_piece];
-
+        
+//         if (now_piece == KING) {                // king safety
+//           for (int k=i-1; k<=i+1; k++){
+//             for (int l=j-1; l<=j+1; l++){
+//               if (k>=0 && k<BOARD_H && l>=0 && l<BOARD_W){
+//                 if (self_board[k][l] == 0)  value += 1;
+//               }
+//             }
+//           }
+//         }
+// 
         if(i>=2 && i<4 && j>=1 && j<3){         // central dominance
           value += 1;
           if(j==2) value += 1;
         }
       } 
       else if ((oppn_piece=oppn_board[i][j])){
-         value -= PIECE_VALUES[oppn_piece];
+        value -= PIECE_VALUES[oppn_piece];
 
-         if(i>=2 && i<4 && j>=1 && j<3){
-           value -= 1;
-           if(j==2) value -= 1;
-         }
+//         if (oppn_piece == KING) {                
+//           for (int k=i-1; k<=i+1; k++){
+//             for (int l=j-1; l<=j+1; l++){
+//               if (k>=0 && k<BOARD_H && l>=0 && l<BOARD_W){
+//                 if (oppn_board[k][l] == 0)  value -= 1;
+//               }
+//             }
+//           }
+//         }
+// 
+        if(i>=2 && i<4 && j>=1 && j<3){
+          value -= 1;
+          if(j==2) value -= 1;
+        }
       }
     }
   }

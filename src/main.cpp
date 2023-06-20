@@ -515,7 +515,8 @@ int main(int argc, char** argv) {
     std::cout << "Draw\n";
     log << "Draw\n";
   }
-  
+  std::cout << "Player White File: " << player_filename[1] << std::endl;
+  std::cout << "Player Black File: " << player_filename[2] << std::endl;
   log.close();
   // Reset state file
   if (remove(file_state.c_str()) != 0)
